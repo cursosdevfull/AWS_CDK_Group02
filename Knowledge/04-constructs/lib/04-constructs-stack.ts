@@ -2,13 +2,18 @@ import * as cdk from "aws-cdk-lib";
 import { Construct } from "constructs";
 import * as iam from "aws-cdk-lib/aws-iam";
 import * as lambda from "aws-cdk-lib/aws-lambda"
+import * as apigateway from "aws-cdk-lib/aws-apigateway"
 import { Asset } from "aws-cdk-lib/aws-s3-assets"
 import * as path from "path"
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
+
 
 export class ConstructsStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
+
+    this.generateConstructL1();
+    this.generateConstructL2();
+    this.generateConstructL3();
   }
 
   generateConstructL1() {
@@ -41,9 +46,29 @@ export class ConstructsStack extends cdk.Stack {
         s3Key: lambdaFunctionSourceCode.s3ObjectKey
       },
       runtime: "nodejs22.x",
-      handler: "sqample-l1-function.handler",
+      handler: "sample-l1-function.handler",
       role: sampleCfnRole.attrArn,
     })
   }
 
+  generateConstructL2() {
+    new lambda.Function(this, "sample-l2-function", {
+      functionName: "sample-l2-function",
+      runtime: lambda.Runtime.NODEJS_22_X,
+      handler: "sample-l2-function.handler",
+      code: lambda.Code.fromAsset(path.join(__dirname, "./functions")),
+    })
+  }
+
+  generateConstructL3() {
+    new apigateway.LambdaRestApi(this, "sample-l3-api", {
+      handler: new lambda.Function(this, "sample-l3-function", {
+        functionName: "sample-l3-function",
+        runtime: lambda.Runtime.NODEJS_22_X,
+        handler: "sample-l3-function.handler",
+        code: lambda.Code.fromAsset(path.join(__dirname, "./functions")),
+      }),
+      proxy: true
+    })
+  }
 }
