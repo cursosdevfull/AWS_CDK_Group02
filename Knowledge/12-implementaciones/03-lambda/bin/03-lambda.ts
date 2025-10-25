@@ -1,10 +1,8 @@
 #!/usr/bin/env node
 import * as cdk from 'aws-cdk-lib';
-import { LambdaStack } from '../lib/02-lambda-stack';
-import { env } from '../env';
-
+import { LambdaStack } from '../lib/03-lambda-stack';
 
 const app = new cdk.App();
 new LambdaStack(app, 'LambdaStack', {
-  dataEnv: env
+
 });

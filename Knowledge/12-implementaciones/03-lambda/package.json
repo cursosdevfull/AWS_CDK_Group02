@@ -1,8 +1,8 @@
 {
-  "name": "02-lambda",
+  "name": "03-lambda",
   "version": "0.1.0",
   "bin": {
-    "02-lambda": "bin/02-lambda.js"
+    "03-lambda": "bin/03-lambda.js"
   },
   "scripts": {
     "build": "tsc",
@@ -11,7 +11,6 @@
     "cdk": "cdk"
   },
   "devDependencies": {
-    "@types/adm-zip": "^0.5.7",
     "@types/jest": "^29.5.14",
     "@types/node": "22.7.9",
     "aws-cdk": "2.1030.0",
@@ -21,10 +20,8 @@
     "typescript": "~5.6.3"
   },
   "dependencies": {
-    "adm-zip": "^0.5.16",
     "aws-cdk-lib": "2.215.0",
     "constructs": "^10.0.0",
-    "esbuild": "^0.25.11",
-    "znv": "^0.5.0"
+    "esbuild": "^0.25.11"
   }
 }

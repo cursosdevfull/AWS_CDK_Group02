@@ -1,5 +1,5 @@
 {
-  "app": "node --env-file=.env --require ts-node/register bin/02-lambda.ts",
+  "app": "npx ts-node --prefer-ts-exts bin/03-lambda.ts",
   "watch": {
     "include": [
       "**"

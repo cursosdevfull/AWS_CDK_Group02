@@ -10,7 +10,7 @@ export class ContextsCustomStack extends cdk.Stack {
     super(scope, id, props);
 
     const vpcExisting = ec2.Vpc.fromLookup(this, "vpc-cache-context", {
-      vpcId: this.node.tryGetContext('vpc-0b0f4f71')
+      vpcId: this.node.tryGetContext('vpc')
     })
 
     new autoscaling.AutoScalingGroup(this, 'ASG-Context', {
