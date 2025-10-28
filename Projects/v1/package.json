@@ -1,8 +1,8 @@
 {
-  "name": "05-lambda-sqs-lambda",
+  "name": "v1",
   "version": "0.1.0",
   "bin": {
-    "05-lambda-sqs-lambda": "bin/05-lambda-sqs-lambda.js"
+    "v1": "bin/v1.js"
   },
   "scripts": {
     "build": "tsc",
@@ -24,7 +24,6 @@
     "@aws-sdk/client-sqs": "^3.918.0",
     "aws-cdk-lib": "2.215.0",
     "aws-lambda": "^1.0.7",
-    "aws-sdk": "^2.1692.0",
     "constructs": "^10.0.0",
     "esbuild": "^0.25.11"
   }
